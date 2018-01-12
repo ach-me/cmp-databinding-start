@@ -1,5 +1,9 @@
 <div class="container">
-  <app-cockpit></app-cockpit>
+  <!-- serverCreated es un evento personalizado -->
+  <!-- el parametro $event sirve para capturar datos cuando se ejecuta el metodo. Puede ser un objeto que nos brinde informacion sobre el servidor, como el nombre y el contenido -->
+  <app-cockpit 
+    (serverCreated)="onServerAdded($event)"
+    (blueprintCreated)="onBlueprintAdded($event)"></app-cockpit>
   <hr>
   <div class="row">
     <div class="col-xs-12">
