@@ -12,7 +12,13 @@
       #serverNameInput>
 
     <label>Server Content</label>
-    <input type="text" class="form-control" [(ngModel)]="newServerContent">
+    <!-- <input type="text" class="form-control" [(ngModel)]="newServerContent"> -->
+
+      
+    <input 
+      type="text" 
+      class="form-control" 
+      #serverContentInput>
     <br>
 
     <!-- La referencia local se puede usar en cualquier lugar del template, y solo dentro del template, no dentro del archivo ts -->

@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-cockpit',
@@ -12,8 +12,11 @@ export class CockpitComponent implements OnInit {
   // Para que estas propiedades sean reconocidas fuera de este componente, es necesario agregar el decorator @Output
   @Output() serverCreated = new EventEmitter<{serverName: string, serverContent: string}>();
   @Output('bpCreated') blueprintCreated = new EventEmitter<{serverName: string, serverContent: string}>();
+
+  // Para acceder al valor de ingresado en el elemento que tiene la referencia #serverContentInput, se antepone ViewChild, que es un decorador que recibe como parametro la referencia local
+  @ViewChild('serverContentInput') serverContentInput: ElementRef;
   // newServerName = '';
-  newServerContent = '';
+  // newServerContent = '';
 
   constructor() { }
 
@@ -25,12 +28,14 @@ export class CockpitComponent implements OnInit {
     //    
     this.serverCreated.emit({
       serverName: serverNameInput.value, 
-      serverContent: this.newServerContent});
+      serverContent: this.serverContentInput.nativeElement.value
+    });
   }
 
   onAddBlueprint(serverNameInput: HTMLInputElement) {
     this.blueprintCreated.emit({
       serverName: serverNameInput.value, 
-      serverContent: this.newServerContent});
+      serverContent: this.serverContentInput.nativeElement.value
+    });
   }
 }
