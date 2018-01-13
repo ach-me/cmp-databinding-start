@@ -12,7 +12,7 @@ export class CockpitComponent implements OnInit {
   // Para que estas propiedades sean reconocidas fuera de este componente, es necesario agregar el decorator @Output
   @Output() serverCreated = new EventEmitter<{serverName: string, serverContent: string}>();
   @Output('bpCreated') blueprintCreated = new EventEmitter<{serverName: string, serverContent: string}>();
-  newServerName = '';
+  // newServerName = '';
   newServerContent = '';
 
   constructor() { }
@@ -20,17 +20,17 @@ export class CockpitComponent implements OnInit {
   ngOnInit() {
   }
 
-  onAddServer() {
+  onAddServer(serverNameInput: HTMLInputElement) {
     // El método "emit" emitirá un nuevo evento del tipo serverCreated
-    // 
+    //    
     this.serverCreated.emit({
-      serverName: this.newServerName, 
+      serverName: serverNameInput.value, 
       serverContent: this.newServerContent});
   }
 
-  onAddBlueprint() {
+  onAddBlueprint(serverNameInput: HTMLInputElement) {
     this.blueprintCreated.emit({
-      serverName: this.newServerName, 
+      serverName: serverNameInput.value, 
       serverContent: this.newServerContent});
   }
 }

@@ -2,15 +2,25 @@
   <div class="col-xs-12">
     <p>Add new Servers or blueprints!</p>
     <label>Server Name</label>
-    <input type="text" class="form-control" [(ngModel)]="newServerName">
+    <!-- <input type="text" class="form-control" [(ngModel)]="newServerName"> -->
+
+    <!-- En lugar de usar conexion de datos de 2 vias, se coloca un referencia local en el elemento html: #serverNameInput.
+    Esta referencia contendrá una referencia al elemento html y todas sus propiedades -->
+    <input 
+      type="text" 
+      class="form-control"
+      #serverNameInput>
+
     <label>Server Content</label>
     <input type="text" class="form-control" [(ngModel)]="newServerContent">
     <br>
+
+    <!-- La referencia local se puede usar en cualquier lugar del template, y solo dentro del template, no dentro del archivo ts -->
     <button
       class="btn btn-primary"
-      (click)="onAddServer()">Add Server</button>
+      (click)="onAddServer(serverNameInput)">Add Server</button>
     <button
       class="btn btn-primary"
-      (click)="onAddBlueprint()">Add Server Blueprint</button>
+      (click)="onAddBlueprint(serverNameInput)">Add Server Blueprint</button>
   </div>
 </div>
