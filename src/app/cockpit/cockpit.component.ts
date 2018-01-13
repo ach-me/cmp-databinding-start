@@ -11,7 +11,7 @@ export class CockpitComponent implements OnInit {
   // EventEmitter es de tipo generico. Adentro se define el tipo de dato del evento que se va a emitir. En este caso el tipo de dato será el que se espera desde app-component es un objeto.  
   // Para que estas propiedades sean reconocidas fuera de este componente, es necesario agregar el decorator @Output
   @Output() serverCreated = new EventEmitter<{serverName: string, serverContent: string}>();
-  @Output() blueprintCreated = new EventEmitter<{serverName: string, serverContent: string}>();
+  @Output('bpCreated') blueprintCreated = new EventEmitter<{serverName: string, serverContent: string}>();
   newServerName = '';
   newServerContent = '';
 
